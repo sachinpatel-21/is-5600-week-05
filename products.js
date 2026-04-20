@@ -74,6 +74,7 @@ async function create (fields) {
   const product = await new Product(fields).save()
   return product
 }
+<<<<<<< HEAD
 
 /**
  * Edit a product
@@ -84,6 +85,24 @@ async function create (fields) {
 async function edit (_id, change) {
   const product = await get(_id)
 
+=======
+
+/**
+ * Edit a product
+ * @param {String} _id
+ * @param {Object} change
+ * @returns {Promise<Object>}
+ */
+async function edit (_id, change) {
+  const product = await get(_id)
+
+  if (!product) {
+    const error = new Error('Product not found')
+    error.status = 404
+    throw error
+  }
+
+>>>>>>> f9f32e7 (Save local changes before merge)
   // todo can we use spread operators here?
   Object.keys(change).forEach(function (key) {
     product[key] = change[key]

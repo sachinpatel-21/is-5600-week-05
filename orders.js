@@ -85,6 +85,15 @@ async function create (fields) {
 async function edit (_id, change) {
   const order = await get(_id)
 
+<<<<<<< HEAD
+=======
+  if (!order) {
+    const error = new Error('Order not found')
+    error.status = 404
+    throw error
+  }
+
+>>>>>>> f9f32e7 (Save local changes before merge)
   Object.keys(change).forEach(function (key) {
     order[key] = change[key]
   })
